@@ -6,4 +6,4 @@
   [[row col] size orientation]
   (case orientation
     :vertical (for [z (range size)] [z 0])
-    [[0 0] [0 1] [0 2]]))
+    (for [z (range size)] [0 z])))
