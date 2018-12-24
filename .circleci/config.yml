@@ -57,7 +57,7 @@ jobs:
           command: |
             ssh $SSH_USER@$SSH_HOST "echo 'deploying' > deployed.txt"
 
-  workflows:
+workflows:
   version: 2
   build-and-deploy:
     jobs:
