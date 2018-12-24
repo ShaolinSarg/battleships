@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+
+  oc_battleships:
+    build: ./
+    image: oc_battleships
+
+    ports:
+      - "3000:3000"
