@@ -58,7 +58,7 @@ jobs:
       - run:
           name: Deploy Over SSH
           command: |
-            ssh $SSH_USER@$SSH_HOST "echo 'deploying' > deployed.txt"
+            ssh $SSH_USER@$SSH_HOST "/bin/bash ./deploy_app.sh"
 
 workflows:
   version: 2
