@@ -4,7 +4,7 @@
             [ring.middleware.json :refer [wrap-json-body]]))
 
 (defroutes app-routes
-  (GET "/"          []      "Coming soon..."))
+  (GET "/"          []      "Coming sooner..."))
 
 (def app
   (-> app-routes
