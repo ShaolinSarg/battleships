@@ -11,7 +11,8 @@
                  [ring/ring-defaults "0.3.2"]
                  [ring/ring-json "0.4.0"]
                  [cheshire "5.8.1"]
-                 [com.taoensso/timbre "4.10.0"]]
+                 [com.taoensso/timbre "4.10.0"]
+                 [buddy/buddy-auth "2.1.0"]]
 
   :target-path "target/%s"
 
