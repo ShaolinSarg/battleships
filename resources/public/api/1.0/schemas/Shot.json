@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Battleship shot post body",
+  "properties": {
+    "launchCode": {
+      "type": "string"
+    },
+    "coord": { "$ref": "definitions.json#/definitions/coordinate"}
+  },
+  "required": [
+    "launchCode",
+    "coord"
+  ]
+}

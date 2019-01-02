@@ -1,0 +1,99 @@
+#%RAML 1.0
+---
+title: Battleships server API
+baseUri: http://46.101.38.125/api/{version}
+version: v1
+securedBy: [basic]
+
+
+---
+securitySchemes:
+  basic:
+    description: This API supports Basic Token Authentication
+    type: Basic Authentication
+    describedBy:
+      headers:
+        Authorization:
+          description: Used to send the "Token value" pair
+          type: string
+          example: Token 123
+
+
+---
+types:
+  registrationSchema: !include schemas/Registration.json
+  shotSchema: !include schemas/Shot.json
+
+  registrationExample: !include examples/Registration.json
+  shotExample: !include examples/Shot.json
+
+
+---
+/players:
+  POST:
+    description: Register to play a new game of battleships
+    body:
+     application/json:
+       type: registrationSchema
+       example: registrationExample
+
+    responses:
+      201:
+      header:
+        location: {baseUri}/players/{id}
+
+  /{id}:
+    /shots:
+      GET:
+        description: Returns all of your shots for the current game
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  {
+                    "hits":[["A", 1]],
+                    "miss":[["B", 2]]
+                  }
+          404:
+      POST:
+        description: Takes your next shot
+        body:
+          application/json:
+            type: shot
+            example: shotExample
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  {
+                    "hit":false
+                  }
+          409:
+            body:
+              application/json:
+                example: |
+                  {
+                    "reason":"not your turn"
+                  }
+          410:
+            body:
+              application/json:
+                example: |
+                  {
+                    "reason":"WINNER clojure the destroyer"
+                  }
+    /opponentShots:
+      GET:
+        description: Returns all of your opponents shots for the current game
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  {
+                    "hits":[["A", 1]],
+                    "miss":[["B", 2]]
+                  }
+          404:
