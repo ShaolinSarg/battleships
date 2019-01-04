@@ -6,7 +6,7 @@
                        "123"))
 
 (defn auth-function
-  [request token]
+  [_ token]
   (= allowed-token token))
 
 (def backend (backends/token {:authfn auth-function}))

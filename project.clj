@@ -12,7 +12,9 @@
                  [ring/ring-json "0.4.0"]
                  [cheshire "5.8.1"]
                  [com.taoensso/timbre "4.10.0"]
-                 [buddy/buddy-auth "2.1.0"]]
+                 [buddy/buddy-auth "2.1.0"]
+                 [org.clojure/core.async "0.4.490"]
+                 [metosin/scjsv "0.5.0"]]
 
   :target-path "target/%s"
 

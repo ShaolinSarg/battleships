@@ -1,61 +1,86 @@
 {
-  "type": "object",
-  "$schema": "http://json-schema.org/draft-07/schema",
-  "title": "Battleship registration post body",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Battleship registration post body",
 
-  "properties": {
-    "name": {
-      "type": "string"
-    },
-    "launchCode": {
-      "type": "string"
-    },
-    "fleet": {
-      "type": "object",
-      "properties": {
-        "carrier": {
-          "type": "array",
-          "items": { "$ref": "definitions.json#/definitions/coordinate"},
-          "minItems": 5,
-          "maxItems": 5
-        },
-        "battleship": {
-          "type": "array",
-          "items": { "$ref": "definitions.json#/definitions/coordinate"},
-          "minItems": 4,
-          "maxItems": 4
-        },
-        "submarine": {
-          "type": "array",
-          "items": { "$ref": "definitions.json#/definitions/coordinate"},
-          "minItems": 3,
-          "maxItems": 3
-        },
-        "cruiser": {
-          "type": "array",
-          "items": { "$ref": "definitions.json#/definitions/coordinate"},
-          "minItems": 3,
-          "maxItems": 3
-        },
-        "Destroyer": {
-          "type": "array",
-          "items": { "$ref": "definitions.json#/definitions/coordinate"},
-          "minItems": 2,
-          "maxItems": 2
+    "definitions": {
+        "coordinate": {
+            "type": "array",
+            "items": [{
+                    "type": "string"
+                },
+                {
+                    "type": "integer"
+                }
+            ],
+            "minItems": 2,
+            "maxItems": 2
         }
-      },
-      "required": [
-        "carrier",
-        "battleship",
-        "submarine",
-        "cruiser",
-        "Destroyer"
-      ]
-    }
-  },
-  "required": [
-    "name",
-    "launchCode",
-    "fleet"
-  ]
+    },
+
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "launchCode": {
+            "type": "string"
+        },
+        "fleet": {
+            "type": "object",
+            "properties": {
+                "carrier": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/coordinate"
+                    },
+                    "minItems": 5,
+                    "maxItems": 5
+                },
+                "battleship": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/coordinate"
+                    },
+                    "minItems": 4,
+                    "maxItems": 4
+                },
+                "submarine": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/coordinate"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                },
+                "cruiser": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/coordinate"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                },
+                "Destroyer": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/coordinate"
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                }
+            },
+            "required": [
+                "carrier",
+                "battleship",
+                "submarine",
+                "cruiser",
+                "Destroyer"
+            ]
+        }
+    },
+    "required": [
+        "name",
+        "launchCode",
+        "fleet"
+    ]
 }

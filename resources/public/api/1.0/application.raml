@@ -1,10 +1,8 @@
 #%RAML 1.0
 ---
-title: Battleships server API
+title: Battleships server
+version: 1.0
 baseUri: http://46.101.38.125/api/{version}
-version: v1
-securedBy: [basic]
-
 
 ---
 securitySchemes:
@@ -17,6 +15,9 @@ securitySchemes:
           description: Used to send the "Token value" pair
           type: string
           example: Token 123
+
+
+securedBy: [basic]
 
 
 ---
@@ -40,7 +41,7 @@ types:
     responses:
       201:
       header:
-        location: {baseUri}/players/{id}
+        location:
 
   /{id}:
     /shots:

@@ -1,15 +1,33 @@
 {
-  "type": "object",
-  "$schema": "http://json-schema.org/draft-07/schema",
-  "title": "Battleship shot post body",
-  "properties": {
-    "launchCode": {
-      "type": "string"
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Battleship shot post body",
+
+    "definitions": {
+        "coordinate": {
+            "type": "array",
+            "items": [{
+                    "type": "string"
+                },
+                {
+                    "type": "integer"
+                }
+            ],
+            "minItems": 2,
+            "maxItems": 2
+        }
     },
-    "coord": { "$ref": "definitions.json#/definitions/coordinate"}
-  },
-  "required": [
-    "launchCode",
-    "coord"
-  ]
+
+    "properties": {
+        "launchCode": {
+            "type": "string"
+        },
+        "coord": {
+            "$ref": "#/definitions/coordinate"
+        }
+    },
+    "required": [
+        "launchCode",
+        "coord"
+    ]
 }
